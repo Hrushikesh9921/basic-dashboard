@@ -177,3 +177,10 @@ footer {
     display: block;
     margin-bottom: 10px; /* Add spacing between images */
 }
+
+
+/* Remove any overflow restrictions on sections */
+.company-highlights, main {
+    overflow: visible; 
+}
+
