@@ -1,0 +1,123 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.activescreening.com/wp-content/uploads/2019/07/about_02-1080x581.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(5px); /* Add blur effect to the background */
+    z-index: -1; /* Ensure background is behind content */
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center-align the main container contents */
+    padding: 30px;
+}
+
+.heading {
+    text-align: center;
+}
+
+.heading__title {
+    font-weight: 600;
+}
+
+/* Cards Styles */
+.cards-container {
+    display: flex;
+    justify-content: center; /* Center-align the grid-container */
+    margin-top: 20px; /* Adjust margin as needed */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+.card {
+    width: 200px; /* Set width for all cards */
+    padding: 20px;
+    min-height: 200px;
+    display: grid;
+    grid-template-rows: 20px 50px 1fr 50px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+    transform: scale(1.01);
+}
+
+.card__exit {
+    grid-row: 1/2;
+    justify-self: end;
+}
+
+.card__icon {
+    grid-row: 2/3;
+    font-size: 30px;
+}
+
+.card__title {
+    grid-row: 3/4;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.card__apply {
+    grid-row: 4/5;
+    align-self: center;
+}
+
+/* CARD BACKGROUNDS */
+.card-1 {
+    background: radial-gradient(#1fe4f5, #3fbafe);
+}
+
+.card-2 {
+    background: radial-gradient(#fbc1cc, #fa99b2);
+}
+
+.card-3 {
+    background: radial-gradient(#76b2fe, #b69efe);
+}
+
+.card-4 {
+    background: radial-gradient(#60efbc, #58d5c9);
+}
+
+.card-5 {
+    background: radial-gradient(#f588d8, #c0a3e5);
+    margin-top: 20px; /* Adjust margin as needed */
+    margin-left: auto; /* Set left margin to auto */
+    margin-right: auto; /* Set right margin to auto */
+}
+
+/* Responsive Styles */
+@media (max-width: 800px) {
+    .grid-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+
