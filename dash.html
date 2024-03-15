@@ -18,6 +18,12 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <!-- <link href="../assets/css/demo.css" rel="stylesheet" /> -->
     <style>
+        body {
+            color: black;
+        }
+        img {
+            display: block;
+        }
         .main-panel {
             padding-left: 0;
         }
@@ -41,6 +47,39 @@
         }
         .navbar-brand {
             text-align: center;
+        }
+
+        .card-body {
+            display: flex;
+            gap:10px;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 !important;
+        }
+       
+        .card-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap:10px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+         
+        .card-image {
+            display: block;
+            width: 60% !important;
+        }
+        .card-body-wrapper {
+            display: flex;
+            gap:15px;
+            width: 100%;
+        }
+        #chartSection1 {
+            width: 100%;
+        }
+        .ard-title-text {
+            color: black;
         }
     </style>
 </head>
@@ -100,6 +139,7 @@
         </div>
     </nav>
     <!-- End Navbar -->
+    
     <div class="content user-behavior">
         <div class="container-fluid">
             <!-- User Behavior Section -->
@@ -109,7 +149,7 @@
                         <div class="card-header">
                             <h4 class="card-title">Users Behavior</h4>
                         </div>
-                        <div class="card-body ">
+                        <div class="card-body">
                             <div id="chartHours" class="ct-chart"></div>
                         </div>
                         <div class="card-footer">
@@ -123,8 +163,9 @@
                         <div class="card-header">
                             <h4 class="card-title">Section 1</h4>
                         </div>
-                        <div class="card-body ">
-                            <div id="chartSection1" class="ct-chart"></div>
+                        <div class="card-body">
+                            <div id="chartSection1" class="ct-chart1"></div>
+
                         </div>
                         <div class="card-footer">
                         </div>
@@ -149,7 +190,7 @@
                         <div class="card-header">
                             <h4 class="card-title">Section 3</h4>
                         </div>
-                        <div class="card-body ">
+                        <div class="card-body">
                             <div id="chartSection3" class="ct-chart"></div>
                         </div>
                         <div class="card-footer">
@@ -161,6 +202,70 @@
     </div>
 </body>
 
+
+<script>
+    // Function to make API call
+    function fetchData() {
+      // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint you want to call
+      fetch('https://rickandmortyapi.com/api/character')
+        .then(response => response.json())
+        .then(data => {
+          // Call function to render data on UI
+          console.log(data)
+          renderData(data.results);
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    }
+
+
+
+    function renderData(data) {
+            const section1 = document.getElementById('chartSection1');
+            data.forEach((item, index) => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('carousel-item');
+                if (index === 0) {
+                    itemElement.classList.add('active');
+                }
+                itemElement.innerHTML = `
+                    <div class="card-wrapper">
+                        <h3 class="card-title-text">${item.species}</h3>
+                        <div class="card-body-wrapper">
+                            <img class="card-image" src="${item.image}" alt="Image">
+                            <div>
+                                <p>Value: ${item.status}</p>
+                            </div>
+                        </div>
+                    <div class="card-footer-wrapper">
+                        <h5>${item.name}</h5>
+                    </div>
+                    <div>
+                `;
+                console.log(itemElement)
+                section1.appendChild(itemElement);
+            });
+
+            // Rotate images automatically
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            let currentIndex = 0;
+
+            setInterval(() => {
+                // Remove active class from current item
+                carouselItems[currentIndex].classList.remove('active');
+                // Move to the next item
+                currentIndex = (currentIndex + 1) % carouselItems.length;
+                // Add active class to the next item
+                carouselItems[currentIndex].classList.add('active');
+            }, 3000); // Rotate every 3 seconds
+        }
+
+
+
+    window.onload = fetchData;
+    </script>
+    
 </html>
 
 
