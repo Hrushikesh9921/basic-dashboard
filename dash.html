@@ -27,6 +27,11 @@
         .main-panel {
             padding-left: 0;
         }
+        .card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
         .card-header, .card-footer {
             background-color: #165164 !important;
             color: #e0e0e0 !important;
@@ -55,6 +60,7 @@
             flex-direction: column;
             align-items: center;
             padding: 0 !important;
+            flex: 1;
         }
        
         .card-wrapper {
@@ -74,6 +80,8 @@
             display: flex;
             gap:15px;
             width: 100%;
+            justify-content: center;
+            object-fit: contain;
         }
         #chartSection1 {
             width: 100%;
@@ -147,7 +155,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Users Behavior</h4>
+                            <h4 class="card-title">DeepIntent FitZone</h4>
                         </div>
                         <div class="card-body">
                             <div id="chartHours" class="ct-chart"></div>
@@ -161,7 +169,7 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Section 1</h4>
+                            <h4 class="card-title">DeepIntent Awards</h4>
                         </div>
                         <div class="card-body">
                             <div id="chartSection1" class="ct-chart1"></div>
@@ -175,10 +183,10 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Section 2</h4>
+                            <h4 class="card-title">Culture @ DeepIntent</h4>
                         </div>
                         <div class="card-body ">
-                            <div id="chartSection2" class="ct-chart"></div>
+                            <div id="chartSection2" class="ct-chart1"></div>
                         </div>
                         <div class="card-footer">
                         </div>
@@ -188,10 +196,10 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Section 3</h4>
+                            <h4 class="card-title">Company Events</h4>
                         </div>
                         <div class="card-body">
-                            <div id="chartSection3" class="ct-chart"></div>
+                            <div id="chartSection3" class="ct-chart1"></div>
                         </div>
                         <div class="card-footer">
                         </div>
@@ -207,19 +215,17 @@
     // Function to make API call
     function fetchData() {
       // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint you want to call
-      fetch('https://rickandmortyapi.com/api/character')
+      fetch('http://192.168.68.140:1111/fetchdata')
         .then(response => response.json())
         .then(data => {
           // Call function to render data on UI
-          console.log(data)
-          renderData(data.results);
+          console.log(data.data)
+          renderData(data.data);
         })
         .catch(error => {
           console.error('Error fetching data:', error);
         });
     }
-
-
 
     function renderData(data) {
             const section1 = document.getElementById('chartSection1');
@@ -231,15 +237,14 @@
                 }
                 itemElement.innerHTML = `
                     <div class="card-wrapper">
-                        <h3 class="card-title-text">${item.species}</h3>
+                        <h3 class="card-title-text">${item.Award}</h3>
                         <div class="card-body-wrapper">
-                            <img class="card-image" src="${item.image}" alt="Image">
-                            <div>
-                                <p>Value: ${item.status}</p>
-                            </div>
+                            <img class="card-image" src="${item.Picture}" alt="Image">
                         </div>
                     <div class="card-footer-wrapper">
-                        <h5>${item.name}</h5>
+                        <h5>${item.Name}</h5>
+                        <h5>${item.Reason}</h5>
+
                     </div>
                     <div>
                 `;
@@ -248,7 +253,8 @@
             });
 
             // Rotate images automatically
-            const carouselItems = document.querySelectorAll('.carousel-item');
+            const carouselItems = section1.querySelectorAll('.carousel-item');
+            console.log(carouselItems,"cI");
             let currentIndex = 0;
 
             setInterval(() => {
@@ -263,9 +269,133 @@
 
 
 
-    window.onload = fetchData;
-    </script>
+
+        // Function to make API call
+        function fetchData1() {
+          // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint you want to call
+          fetch('http://192.168.68.140:1111/cultureatdi')
+            .then(response => response.json())
+            .then(data => {
+              // Call function to render data on UI
+              console.log(data.data)
+              renderData1(data.data);
+            })
+            .catch(error => {
+              console.error('Error fetching data:', error);
+            });
+        }
     
+    
+        function renderData1(data) {
+                const section2 = document.getElementById('chartSection2');
+                data.forEach((item, index) => {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('carousel-item');
+                    if (index === 0) {
+                        itemElement.classList.add('active');
+                    }
+                    itemElement.innerHTML = `
+                        <div class="card-wrapper">
+                            <h3 class="card-title-text">${item.Reason}</h3>
+                            <div class="card-body-wrapper">
+                                <img class="card-image" src="${item.Picture}" alt="Image">
+                          
+                            </div>
+                        <div class="card-footer-wrapper">
+                            <h5>${item.Event}</h5>
+                            <h5>${item.Reason}</h5>
+    
+                        </div>
+                        <div>
+                    `;
+                    console.log(itemElement)
+                    section2.appendChild(itemElement);
+                });
+    
+                // Rotate images automatically
+                const carouselItems = section2.querySelectorAll('.carousel-item');
+                let currentIndex = 0;
+    
+                setInterval(() => {
+                    // Remove active class from current item
+                    carouselItems[currentIndex].classList.remove('active');
+                    // Move to the next item
+                    currentIndex = (currentIndex + 1) % carouselItems.length;
+                    // Add active class to the next item
+                    carouselItems[currentIndex].classList.add('active');
+                }, 3000); // Rotate every 3 seconds
+            }
+    
+    
+    
+        // Function to make API call
+        function fetchData2() {
+          // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint you want to call
+          fetch('http://192.168.68.140:1111/companyevent')
+            .then(response => response.json())
+            .then(data => {
+              // Call function to render data on UI
+              console.log(data.data)
+              renderData2(data.data);
+            })
+            .catch(error => {
+              console.error('Error fetching data:', error);
+            });
+        }
+    
+    
+        function renderData2(data) {
+                const section3 = document.getElementById('chartSection3');
+                data.forEach((item, index) => {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('carousel-item');
+                    if (index === 0) {
+                        itemElement.classList.add('active');
+                    }
+                    itemElement.innerHTML = `
+                        <div class="card-wrapper">
+                            <h3 class="card-title-text">${item.Event}</h3>
+                            <div class="card-body-wrapper">
+                                <img class="card-image" src="${item.Picture}" alt="Image">
+                          
+                            </div>
+                        <div class="card-footer-wrapper">
+                            <h5>${item.Description}</h5>
+    
+                        </div>
+                        <div>
+                    `;
+                    console.log(itemElement)
+                    section3.appendChild(itemElement);
+                });
+    
+                // Rotate images automatically
+                const carouselItems = section3.querySelectorAll('.carousel-item');
+                let currentIndex = 0;
+    
+                setInterval(() => {
+                    // Remove active class from current item
+                    carouselItems[currentIndex].classList.remove('active');
+                    // Move to the next item
+                    currentIndex = (currentIndex + 1) % carouselItems.length;
+                    // Add active class to the next item
+                    carouselItems[currentIndex].classList.add('active');
+                }, 3000); // Rotate every 3 seconds
+            }
+    
+    
+            function fetching() {
+                fetchData();
+                fetchData1();
+                fetchData2();
+            }
+
+        window.onload = fetching;
+        </script>
+        
+
+
+
 </html>
 
 
