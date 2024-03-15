@@ -8,26 +8,28 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
+    font-family: "Arial";
 }
 
 .background-container {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: -100px;
+    left: 50px;
     width: 100%;
     height: 100%;
-    background-image: url('https://www.activescreening.com/wp-content/uploads/2019/07/about_02-1080x581.jpg');
-    background-size: cover;
+    /* background-image: url('https://www.activescreening.com/wp-content/uploads/2019/07/about_02-1080x581.jpg'); */
+    /* background-image: url('Slide1.jpeg'); */
+    background-size: contain;
     background-position: center;
-    filter: blur(5px); /* Add blur effect to the background */
-    z-index: -1; /* Ensure background is behind content */
+    /* filter: blur(5px); */
+    z-index: -1;
 }
 
 .main-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center-align the main container contents */
+    align-items: center;
     padding: 30px;
 }
 
@@ -37,23 +39,28 @@ body {
 
 .heading__title {
     font-weight: 600;
+    color: #165164;
+    text-decoration: none;
 }
 
 /* Cards Styles */
 .cards-container {
     display: flex;
-    justify-content: center; /* Center-align the grid-container */
-    margin-top: 20px; /* Adjust margin as needed */
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+    font-size: small;
 }
 
 .card {
-    width: 200px; /* Set width for all cards */
+    width: 200px;
     padding: 20px;
     min-height: 200px;
     display: grid;
@@ -61,6 +68,7 @@ body {
     border-radius: 10px;
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
     transition: all 0.2s;
+    text-decoration: none; /* Add this line */
 }
 
 .card:hover {
@@ -79,9 +87,12 @@ body {
 }
 
 .card__title {
-    grid-row: 3/4;
+    grid-row: 4/4;
     font-weight: 400;
     color: #ffffff;
+    text-decoration: none; /* Or add this line */
+    align-items: center;
+    align-content: center;
 }
 
 .card__apply {
@@ -91,7 +102,8 @@ body {
 
 /* CARD BACKGROUNDS */
 .card-1 {
-    background: radial-gradient(#1fe4f5, #3fbafe);
+    background: radial-gradient(#165164, #165164);
+    align-items: center;
 }
 
 .card-2 {
@@ -111,17 +123,17 @@ body {
 }
 
 .card-5 {
-    background: radial-gradient(#f588d8, #c0a3e5);
-    margin-top: 20px; /* Adjust margin as needed */
-    margin-left: auto; /* Set left margin to auto */
-    margin-right: auto; /* Set right margin to auto */
+    background: radial-gradient(#165164, #165164);
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 /* Responsive Styles */
 @media (max-width: 800px) {
     .grid-container {
-        grid-template-columns: repeat(1, 1fr);
+        flex-direction: column;
+        align-items: center;
     }
 }
-
-

@@ -1969,9 +1969,12 @@ fieldset[disabled] .form-control {
 
 .navbar .navbar-brand {
     font-weight: 400;
-    margin: 5px 0px;
-    font-size: 20px;
+    /* margin: 5px 0px; */
+    font-size: 30px;
     color: #888888;
+    display: flex;
+    justify-content: center;
+  
 }
 
 .navbar .navbar-brand:hover {
@@ -2839,7 +2842,7 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .card .card-header {
-    padding: 15px 15px 0;
+    padding: 8px 8px 8px;
     background-color: #FFFFFF;
     border-bottom: none !important;
 }
@@ -2865,7 +2868,7 @@ Copyright (c) 2015 Daniel Eden
 
 .card .card-title {
     margin: 0;
-    color: #333333;
+    color: #ffffff;
     font-weight: 300;
 }
 
@@ -4071,6 +4074,9 @@ Copyright (c) 2015 Daniel Eden
     }
     .navbar-brand {
         padding: 15px 15px;
+        display: flex;
+        justify-content: center;
+      
     }
     .navbar-transparent {
         padding-top: 15px;

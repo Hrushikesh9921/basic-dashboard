@@ -22,18 +22,25 @@
             padding-left: 0;
         }
         .card-header, .card-footer {
-            background-color: #34cf3e !important;
+            background-color: #165164 !important;
             color: #e0e0e0 !important;
+                
         }
         .navbar {
             background-color: #165164 !important;
             color: #FBF9F1 !important;
+            justify-content: center;
         }
         .navbar a, .navbar-brand, .nav-link, .navbar-nav>li>a {
             color: #FBF9F1 !important;
+            text-align: center;
+            
         }
         .user-behavior {
             margin-top: 20px; /* Add padding between top navbar and user behavior section */
+        }
+        .navbar-brand {
+            text-align: center;
         }
     </style>
 </head>
@@ -41,9 +48,9 @@
 <body>
     <!-- Main panel content from dashboard.html -->
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg " color-on-scroll="500" style="background-color: #164863; color: #FBF9F1;">
+    <nav class="navbar navbar-expand-lg " color-on-scroll="500" style="background-color: #164863; color: #FBF9F1; text-align: center;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#pablo"> Employee Experience Portal </a>
+            <a class="navbar-brand" > </a>
             <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-bar burger-lines"></span>
                 <span class="navbar-toggler-bar burger-lines"></span>
@@ -52,10 +59,11 @@
             <div class="collapse navbar-collapse justify-content-end" id="navigation">
                 <ul class="nav navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link" data-toggle="dropdown">
+                        <a class="navbar-brand" > Employee Experience Portal </a> 
+                        <!-- <a href="#" class="nav-link" data-toggle="dropdown">
                             <i class="nc-icon nc-palette"></i>
                             <span class="d-lg-none">Employee Experience Portal</span>
-                        </a>
+                        </a> -->
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
@@ -84,7 +92,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="rolling-dash.html">
-                            <span class="no-icon">Slide Show</span>
+                            <span class="no-icon" target="_blank">Slide Show</span>
                         </a>
                     </li>
                 </ul>
