@@ -1,0 +1,158 @@
+<!-- New file: dash.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <!-- <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png"> -->
+    <!-- <link rel="icon" type="image/png" href="../assets/img/favicon.ico"> -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> -->
+    <title>Employee Engagement Dashboard</title>
+    <!-- <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' /> -->
+    <!--     Fonts and icons     -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" /> -->
+    <!-- CSS Files -->
+    <link href="bootstrap.min.css" rel="stylesheet" />
+    <link href="light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <!-- <link href="../assets/css/demo.css" rel="stylesheet" /> -->
+    <style>
+        .main-panel {
+            padding-left: 0;
+        }
+        .card-header, .card-footer {
+            background-color: #34cf3e !important;
+            color: #e0e0e0 !important;
+        }
+        .navbar {
+            background-color: #165164 !important;
+            color: #FBF9F1 !important;
+        }
+        .navbar a, .navbar-brand, .nav-link, .navbar-nav>li>a {
+            color: #FBF9F1 !important;
+        }
+        .user-behavior {
+            margin-top: 20px; /* Add padding between top navbar and user behavior section */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main panel content from dashboard.html -->
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg " color-on-scroll="500" style="background-color: #164863; color: #FBF9F1;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#pablo"> Employee Experience Portal </a>
+            <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-bar burger-lines"></span>
+                <span class="navbar-toggler-bar burger-lines"></span>
+                <span class="navbar-toggler-bar burger-lines"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-toggle="dropdown">
+                            <i class="nc-icon nc-palette"></i>
+                            <span class="d-lg-none">Employee Experience Portal</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#pablo">
+                            <span class="no-icon">Account</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="no-icon">Dropdown</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pablo">
+                            <span class="no-icon">Add New</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rolling-dash.html">
+                            <span class="no-icon">Slide Show</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="content user-behavior">
+        <div class="container-fluid">
+            <!-- User Behavior Section -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Users Behavior</h4>
+                        </div>
+                        <div class="card-body ">
+                            <div id="chartHours" class="ct-chart"></div>
+                        </div>
+                        <div class="card-footer">
+                        </div>                    </div>
+                </div>
+            </div>
+            <!-- Section 1 -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Section 1</h4>
+                        </div>
+                        <div class="card-body ">
+                            <div id="chartSection1" class="ct-chart"></div>
+                        </div>
+                        <div class="card-footer">
+                        </div>
+                    </div>
+                </div>
+                <!-- Section 2 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Section 2</h4>
+                        </div>
+                        <div class="card-body ">
+                            <div id="chartSection2" class="ct-chart"></div>
+                        </div>
+                        <div class="card-footer">
+                        </div>
+                    </div>
+                </div>
+                <!-- Section 3 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Section 3</h4>
+                        </div>
+                        <div class="card-body ">
+                            <div id="chartSection3" class="ct-chart"></div>
+                        </div>
+                        <div class="card-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+

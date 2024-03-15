@@ -26,8 +26,8 @@ body, html {
     transition: transform 0.3s, box-shadow 0.3s;
   }
   
-  .card:hover {
+  /* .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
+  } */
   
