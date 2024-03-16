@@ -89,6 +89,107 @@
         .ard-title-text {
             color: black;
         }
+
+        .table-container {
+    width: 100%; /* Adjust width as needed */
+    text-align: left;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#highlight-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+#highlight-table th, 
+#highlight-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#highlight-table th {
+    background-color: #639aac;
+}
+
+#highlight-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#highlight-table tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+  align-items: flex-end;
+}
+
+.podium__item {
+  width: 200px;
+}
+
+.podium__rank {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  color: #fff;
+}
+
+.podium__city {
+  text-align: center;
+  padding: 0 .5rem;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.podium__number {
+  width: 27px;
+  height: 75px;
+}
+
+.podium .first {
+  min-height: 300px;
+  background: #af5050;
+}
+
+.podium .second {
+  min-height: 200px;
+  background: rgb(90, 90, 162);
+}
+
+.podium .third {
+  min-height: 100px;
+  background: rgb(93, 156, 93);
+}
+
+.d-flex {
+  display: flex;
+  justify-content: center;
+}
+
     </style>
 </head>
 
@@ -158,8 +259,46 @@
                             <h4 class="card-title">DeepIntent FitZone</h4>
                         </div>
                         <div class="card-body">
-                            <div id="chartHours" class="ct-chart"></div>
+                            <div class="container d-flex justify-content-center">
+                                <div class="table-container">
+                                    <table id="highlight-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Rank</th>
+                                                <th>Name</th>
+                                                <th>Calories Burned</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Table rows will be dynamically added here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="container podium">
+                                    <div class="podium__item" >
+                                        <p class="podium__city" id="podiumSecond"></p>
+                                        <div class="podium__rank second">2</div>
+                                    </div>
+                                    <div class="podium__item" >
+                                        <p class="podium__city" id="podiumFirst"></p>
+                                        <div class="podium__rank first">
+                                            <svg class="podium__number" viewBox="0 0 27.476 75.03" xmlns="http://www.w3.org/2000/svg">
+                                                <g transform="matrix(1, 0, 0, 1, 214.957736, -43.117417)">
+                                                    <path class="st8" d="M -198.928 43.419 C -200.528 47.919 -203.528 51.819 -207.828 55.219 C -210.528 57.319 -213.028 58.819 -215.428 60.019 L -215.428 72.819 C -210.328 70.619 -205.628 67.819 -201.628 64.119 L -201.628 117.219 L -187.528 117.219 L -187.528 43.419 L -198.928 43.419 L -198.928 43.419 Z"
+                                                        style="fill: #fffafa;" />
+                                                </g>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="podium__item" >
+                                        <p class="podium__city" id="podiumThird"></p>
+                                        <div class="podium__rank third">3</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        
+                        
                         <div class="card-footer">
                         </div>                    </div>
                 </div>
@@ -219,7 +358,7 @@
         .then(response => response.json())
         .then(data => {
           // Call function to render data on UI
-          console.log(data.data)
+        //   console.log(data.data)
           renderData(data.data);
         })
         .catch(error => {
@@ -248,13 +387,13 @@
                     </div>
                     <div>
                 `;
-                console.log(itemElement)
+                // console.log(itemElement)
                 section1.appendChild(itemElement);
             });
 
             // Rotate images automatically
             const carouselItems = section1.querySelectorAll('.carousel-item');
-            console.log(carouselItems,"cI");
+            // console.log(carouselItems,"cI");
             let currentIndex = 0;
 
             setInterval(() => {
@@ -277,7 +416,7 @@
             .then(response => response.json())
             .then(data => {
               // Call function to render data on UI
-              console.log(data.data)
+            //   console.log(data.data)
               renderData1(data.data);
             })
             .catch(error => {
@@ -308,7 +447,7 @@
                         </div>
                         <div>
                     `;
-                    console.log(itemElement)
+                    // console.log(itemElement)
                     section2.appendChild(itemElement);
                 });
     
@@ -335,7 +474,7 @@
             .then(response => response.json())
             .then(data => {
               // Call function to render data on UI
-              console.log(data.data)
+            //   console.log(data.data)
               renderData2(data.data);
             })
             .catch(error => {
@@ -365,7 +504,7 @@
                         </div>
                         <div>
                     `;
-                    console.log(itemElement)
+                    // console.log(itemElement)
                     section3.appendChild(itemElement);
                 });
     
@@ -382,12 +521,110 @@
                     carouselItems[currentIndex].classList.add('active');
                 }, 3000); // Rotate every 3 seconds
             }
+
+            // Get reference to the tbody element
+
+
+// Function to make API call
+function fetchfitnesstableData() {
+
+          // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint you want to call
+          fetch('http://192.168.68.140:1111/workout')
+            .then(response => response.json())
+            .then(data => {
+              // Call function to render data on UI
+            //    console.log(data.data)
+            
+              renderfitnesstableData(data.data);
+            })
+            .catch(error => {
+              console.error('Error fetching data:', error);
+            });
+        }
+
+// Function to add rows to the table
+function renderfitnesstableData(tableData) {
+    const tbody = document.querySelector('.table-container tbody');
+    tableData.forEach(data => {
+
+        if (tableData.length === 0) {
+                // If there are no records, add 10 empty rows
+                for (let i = 0; i < 10; i++) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    `;
+                    tbody.appendChild(row);
+                }
+            } else {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${data.Rank}</td>
+            <td>${data.Employee}</td>
+            <td>${data.Calories}</td>
+        `;
+        tbody.appendChild(row);
+    }
+})
+};
+
+
+// Function to make API call
+function fetchleaderboardeData() {
+
+// Replace 'YOUR_API_ENDPOINT' with the actual API endpoint you want to call
+fetch('http://192.168.68.140:1111/top_three_last_week')
+  .then(response => response.json())
+  .then(data => {
+    // Call function to render data on UI
+     console.log(data.data)
+    renderleaderboardData(data.data);
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+}
+
+function renderleaderboardData(data) {
+    // const tbody = document.querySelector('.container podium');
     
+    data.forEach(data => {
+        // <p class="podium__city">Annecy</p>
+        // const row = document.createElement('p');
+        console.log(data.Rank)
+        if (data.Rank === 1){
+            document.getElementById('podiumFirst').innerText = data.Employee;
+            // document.getElementById('podiumFirst').innerText = data.Employee;
+            // document.getElementById('podiumFirst').style.height = `400px`;
+            // document.getElementById('podiumFirst').style.backgroundColor = `#ffffff`;
+            // podium1.innerHTML = data.Employee;
+        } else if (data.Rank === 2){
+            document.getElementById('podiumSecond').innerText = data.Employee;
+            // document.getElementById('podiumSecond').style.height = `250px`;   
+        } else if (data.Rank === 3){
+            document.getElementById('podiumThird').innerText = data.Employee 
+            // document.getElementById('podiumThird').style.height = `100px`;   
+
+        }
+        
+        // itemElement.classList.add('active');
+        
+      
+        
+    }
+
+)}
+;
+
     
             function fetching() {
                 fetchData();
                 fetchData1();
                 fetchData2();
+                fetchfitnesstableData();
+                fetchleaderboardeData();
             }
 
         window.onload = fetching;
