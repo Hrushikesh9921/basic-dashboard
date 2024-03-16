@@ -84,6 +84,16 @@
             display: block;
             width: 60% !important;
         }
+
+        .card-image-award {
+            display: block;
+            width: 60% !important;
+        }
+
+        .card-image-cult {
+            display: block;
+            width: 70% !important;
+        }
         .card-body-wrapper {
             display: flex;
             gap:15px;
@@ -537,7 +547,7 @@ body {
                     <div class="card-wrapper">
                         <h3 class="card-title-text">${item.Award}</h3>
                         <div class="card-body-wrapper">
-                            <img class="card-image" src="${item.Picture}" alt="Image">
+                            <img class="card-image-award" src="${item.Picture}" alt="Image">
                         </div>
                     <div class="card-footer-wrapper">
                         <h5>${item.Name}</h5>
@@ -596,7 +606,7 @@ body {
                         <div class="card-wrapper">
                             <h3 class="card-title-text">${item.Event}</h3>
                             <div class="card-body-wrapper">
-                                <img class="card-image" src="${item.Picture}" alt="Image">
+                                <img class="card-image-cult" src="${item.Picture}" alt="Image">
                           
                             </div>
                         <div class="card-footer-wrapper">
@@ -706,6 +716,7 @@ function renderfitnesstableData(tableData) {
     tableData.forEach(data => {
 
         if (tableData.length === 0) {
+
                 // If there are no records, add 10 empty rows
                 for (let i = 0; i < 10; i++) {
                     const row = document.createElement('tr');
@@ -717,6 +728,8 @@ function renderfitnesstableData(tableData) {
                     tbody.appendChild(row);
                 }
             } else {
+//                 const element = document.getElementById("tr");
+// element.remove();
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${data.Rank}</td>
@@ -778,8 +791,14 @@ function renderleaderboardData(data) {
 
     
             function fetching() {
+                // fetchfitnesstableData();
+                // fetchleaderboardeData();
                 fetchData();
+                // fetchfitnesstableData();
+                // fetchleaderboardeData();
                 fetchData1();
+                // fetchfitnesstableData();
+                // fetchleaderboardeData();
                 fetchData2();
                 fetchfitnesstableData();
                 fetchleaderboardeData();
