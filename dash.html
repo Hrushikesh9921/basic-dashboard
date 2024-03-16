@@ -32,9 +32,17 @@
             display: flex;
             flex-direction: column;
         }
-        .card-header, .card-footer {
+        .card-header  {
             background-color: #165164 !important;
             color: #e0e0e0 !important;
+                
+        }
+
+         .card-footer {
+            background-color: #ffffff !important;
+            color: #e0e0e0 !important;
+            align-items: center ;
+
                 
         }
         .navbar {
@@ -189,6 +197,19 @@ body {
   display: flex;
   justify-content: center;
 }
+.fitzone-container {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.podium {
+    flex:1;
+    justify-content: center;
+}
+
+.rank-table {
+    flex:1;
+}
 
     </style>
 </head>
@@ -259,8 +280,8 @@ body {
                             <h4 class="card-title">DeepIntent FitZone</h4>
                         </div>
                         <div class="card-body">
-                            <div class="container d-flex justify-content-center">
-                                <div class="table-container">
+                            <div class="d-flex justify-content-space-between fitzone-container">
+                                <div class="table-container rank-table">
                                     <table id="highlight-table">
                                         <thead>
                                             <tr>
@@ -270,7 +291,7 @@ body {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <!-- Table rows will be dynamically added here -->
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -300,7 +321,21 @@ body {
                         
                         
                         <div class="card-footer">
-                        </div>                    </div>
+                            <!-- <a href="https://example.com/target-page">
+                                <img src="Linkedin.png" alt="Icon" width="32" height="32" >
+                            </a> -->
+                            <html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body>
+        <a href="https://www.linkedin.com/feed/?shareActive=true&text=%F0%9F%9A%80+DeepIntent+Hackathon+2024+%F0%9F%9A%80%0A%0A++++++++Looking+forward+to+sharing+our+journey+and+the+innovative+solutions+we+come+up+with.+Stay+tuned%21+%0A%0A++++++++%23Hackathon2024+%23Innovation+%23TeamworkMakesTheDreamWork" target="_blank" rel="noopener noreferrer" class="linkicon">
+            <i class="fab fa-linkedin fa-3x"></i>
+        </a>
+    </body>
+    </html>
+                        </div>                    
+                    </div>
                 </div>
             </div>
             <!-- Section 1 -->
@@ -529,7 +564,7 @@ body {
 function fetchfitnesstableData() {
 
           // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint you want to call
-          fetch('http://192.168.68.140:1111/workout')
+          fetch('http://192.168.68.140:1111/workout_main')
             .then(response => response.json())
             .then(data => {
               // Call function to render data on UI
