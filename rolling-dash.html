@@ -4,20 +4,266 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rolling Cards</title>
+  <link href="bootstrap.min.css" rel="stylesheet" />
+  <link href="light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
   <link rel="stylesheet" href="rolling-dash.css">
+  <style>
+    body {
+            color: black;
+        }
+        img {
+            display: block;
+        }
+        .main-panel {
+            padding-left: 0;
+        }
+        .card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-header, .card-footer {
+            background-color: #165164 !important;
+            color: #e0e0e0 !important;
+                
+        }
+        .navbar {
+            background-color: #165164 !important;
+            color: #FBF9F1 !important;
+            justify-content: center;
+        }
+        .navbar a, .navbar-brand, .nav-link, .navbar-nav>li>a {
+            color: #FBF9F1 !important;
+            text-align: center;
+            
+        }
+        .user-behavior {
+            margin-top: 20px; /* Add padding between top navbar and user behavior section */
+        }
+        .navbar-brand {
+            text-align: center;
+        }
+
+        .card-body {
+            display: flex;
+            gap:10px;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 !important;
+            flex: 1;
+        }
+       
+        .card-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap:10px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+         
+        .card-image {
+            display: block;
+            width: 100% !important;
+            height: 100%;
+        }
+        .card-body-wrapper {
+            display: flex;
+            gap:15px;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            object-fit: contain;
+        }
+        #chartSection1 {
+            width: 100%;
+        }
+        .ard-title-text {
+            color: black;
+        }
+
+        .table-container {
+    width: 100%; /* Adjust width as needed */
+    text-align: left;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#highlight-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+#highlight-table th, 
+#highlight-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#highlight-table th {
+    background-color: #639aac;
+}
+
+#highlight-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#highlight-table tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+  align-items: flex-end;
+}
+
+.podium__item {
+  width: 200px;
+}
+
+.podium__rank {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  color: #fff;
+}
+
+.podium__city {
+  text-align: center;
+  padding: 0 .5rem;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.podium__number {
+  width: 27px;
+  height: 75px;
+}
+
+.podium .first {
+  min-height: 300px;
+  background: #af5050;
+}
+
+.podium .second {
+  min-height: 200px;
+  background: rgb(90, 90, 162);
+}
+
+.podium .third {
+  min-height: 100px;
+  background: rgb(93, 156, 93);
+}
+
+.d-flex {
+  display: flex;
+  justify-content: center;
+}
+
+  </style>
 </head>
 <body>
 
-    <div class="card" id="card1">
-        <img src="https://pbs.twimg.com/media/FyMyTIOWcAE1OUo?format=jpg&name=large" alt="Image for Card 1">
-      </div>
-<div class="card" id="card2">Card 2</div>
-<div class="card" id="card3">Card 3</div>
-<div class="card" id="card4">Card 4</div>
-<div class="card" id="card5">Card 5</div>
-<div class="card" id="card6">Card 6</div>
-<div class="card" id="card7">Card 7</div>
-<div class="card" id="card8">Card 8</div>
+  <div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Company Events</h4>
+    </div>
+    <div class="card-body">
+        <div id="chartSection1" class="ct-chart1"></div>
+
+    </div>
+    <!-- <div class="card-footer"> -->
+    </div>
+    
+
+
+  <script>
+    // Function to make API call
+    function fetchData() {
+      // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint you want to call
+      fetch('http://192.168.68.60:1111/companyevent')
+        .then(response => response.json())
+        .then(data => {
+          // Call function to render data on UI
+          console.log(data.data)
+          renderData(data.data);
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    }
+
+    
+    function renderData(data) {
+      const section1 = document.getElementById('chartSection1');
+            data.forEach((item, index) => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('carousel-item');
+                if (index === 0) {
+                    itemElement.classList.add('active');
+                }
+                itemElement.innerHTML = `
+                    <div class="card-wrapper">
+                        <h3 class="card-title-text">${item.Event}</h3>
+                        <div class="card-body-wrapper">
+                            <img class="card-image" src="${item.Picture}" alt="Image">
+                        </div>
+                     <div class="card-footer-wrapper">
+                        <h5>${item.Description}</h5>
+
+                    </div>
+                    <div>
+                `;
+                console.log(itemElement)
+                section1.appendChild(itemElement);
+                            // Rotate images automatically
+
+
+           
+            });
+            const carouselItems = section1.querySelectorAll('.carousel-item');
+            let currentIndex = 0;
+
+            setInterval(() => {
+              console.log(carouselItems.length,currentIndex,"CURR INDEX");
+                // Remove active class from current item
+                carouselItems[currentIndex].classList.remove('active');
+                // Move to the next item
+                currentIndex = (currentIndex + 1) % carouselItems.length;
+                // Add active class to the next item
+                carouselItems[currentIndex].classList.add('active');
+            }, 3000); // Rotate every 3 seconds
+
+        }
+
+        window.onload = fetchData();
+
+
+</script>
+  
+
 
 <script>
   window.onload = function() {
@@ -28,7 +274,7 @@
       document.getElementById(`card${currentCard}`).style.display = 'none';
       currentCard = currentCard === totalCards ? 1 : currentCard + 1;
       document.getElementById(`card${currentCard}`).style.display = 'flex';
-    }, 3000); // Change card every 3 seconds
+    }, 10000); // Change card every 3 seconds
   };
 </script>
 
